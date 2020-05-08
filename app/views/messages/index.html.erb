@@ -1,2 +1,14 @@
 <h1>Messages#index</h1>
 <p>Find me in app/views/messages/index.html.erb</p>
+
+<% form_data = {} %>
+<% form_data['controller'] = 'chat' %>
+<% form_data['action'] = 'ajax:beforeSend->chat#post' %>
+<% text_field_data = { target: 'chat.message' } %>
+
+<%= form_with url: '#', id: 'message', data: form_data  do %>
+  <%= text_field_tag 'body', '', data: text_field_data %>
+<% end %>
+
+<ul id="messages"></ul>
+
